@@ -1,0 +1,195 @@
+* {
+    padding: 0px;
+    margin: 2px 0px;
+    font-size: 18px;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 800px;
+    margin: 0px auto;
+}
+
+.row {
+    width: 110%;
+    margin-bottom: 10px;
+
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin: 4px 0px;
+}
+
+.form-group>label {
+    width: 100px;
+}
+
+.form-control {
+    width: 500px;
+    outline: none;
+    padding: 6px 5px;
+    border-radius: 5px;
+}
+
+.create-area {
+    background-color: rgb(45, 209, 154);
+    padding: 5px 15px;
+    border-radius: 5px;
+    justify-content: space-between;
+}
+
+.heading-2 {
+    font-size: 50px;
+    text-align: center;
+}
+
+
+
+
+
+.priceshow {
+    color: red;
+}
+
+.col1 {
+    color: blue;
+    text-align: center;
+    font-size: 25px;
+}
+
+.contentshow {
+    margin-bottom: 10px;
+    background: #ddddff;
+    padding: 5px;
+    text-align: justify;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px
+}
+
+.avatar-sm {
+    width: 150px;
+    height: 150px;
+    border-radius: 1%;
+    margin-right: 5px;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    padding: 5px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 3px;
+}
+
+.update {
+    border: none;
+    outline: none;
+    padding: 5px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 3px;
+    background-color: rgb(18, 69, 179);
+    color: white;
+}
+
+.update:hover {
+    background-color: rgb(112, 89, 214);
+    color: white;
+}
+
+.cancel {
+    border: none;
+    outline: none;
+    padding: 5px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 3px;
+    background-color: rgb(88, 87, 94);
+    color: white;
+
+}
+
+.cancel:hover {
+    background-color: rgb(168, 168, 168);
+    color: white;
+}
+
+.btn-dark {
+    background-color: rgb(47, 0, 255);
+    color: white;
+}
+
+.btn-dark:hover {
+    background-color: rgb(40, 54, 255);
+    scale: .97;
+}
+
+.btn-warning {
+    background-color: rgb(99, 97, 95);
+    color: white;
+}
+
+.btn-warning:hover {
+    background-color: rgb(155, 153, 149);
+    scale: .97;
+}
+
+.btn1 {
+
+    border: none;
+    outline: none;
+    padding: 2px 2px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 3px;
+}
+
+.btn-dark1 {
+    background-color: rgb(255, 131, 29);
+    color: white;
+}
+
+.btn-dark1:hover {
+    background-color: rgb(255, 175, 27);
+    scale: .97;
+}
+
+.btn-warning1 {
+    background-color: rgb(255, 0, 0);
+    color: white;
+}
+
+.btn-warning1:hover {
+    background-color: rgb(255, 75, 75);
+    scale: .97;
+}
+
+.form-control-md {
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgb(235, 226, 226);
+
+}
+
+.distance {
+    margin: 0 0 10px;
+    padding: 5px;
+    border: 1px dashed #CCC;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    position: relative;
+}
+
+
+.distance:hover {
+    border: 1px dashed rgb(0, 0, 0);
+
+}
+
+.d-none {
+    display: none;
+}
