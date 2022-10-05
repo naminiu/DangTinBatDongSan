@@ -107,10 +107,10 @@ function addbatdongsan() {
         alert("Hướng là bắt buộc")
         return;
     }
-    if (!validation(price)) {
-        alert("Giá là bắt buộc")
-        return;
-    }
+        // if (!validation(price)) {
+        //     alert("Giá là bắt buộc")
+        //     return;
+        // }
     if (!validation(location)) {
         alert("Vị trí là bắt buộc")
         return;
