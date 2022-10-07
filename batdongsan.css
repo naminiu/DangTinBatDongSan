@@ -4,7 +4,6 @@
     font-size: 18px;
     box-sizing: border-box;
     font-family: 'Times New Roman', Times, serif;
-
 }
 
 .container {
@@ -56,6 +55,7 @@
     color: blue;
     text-align: center;
     font-size: 25px;
+
 }
 
 .contentshow {
@@ -192,3 +192,10 @@
 .d-none {
     display: none;
 }
+
+/* body { */
+    /* background-image: url('https://img6.thuthuatphanmem.vn/uploads/2022/03/04/anh-background-nha-cho-zoom_013003515.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    background-size: 100% 100%; */
+/* } */
