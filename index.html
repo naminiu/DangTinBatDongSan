@@ -8,10 +8,11 @@
     <title>Document</title>
     <link rel="stylesheet" href="./batdongsan.css">
     <!-- <link rel="stylesheet" href="/batdongsan.css"> -->
-    <link rel="icon" href="https://o.remove.bg/downloads/d5f66e09-372e-4832-b43c-220c8b49d57d/pngtree-country-small-house-icon-beautiful-simple-wind-house-free-illustration-image_1174142-removebg-preview.png">
+    <link rel="icon"
+        href="https://o.remove.bg/downloads/d5f66e09-372e-4832-b43c-220c8b49d57d/pngtree-country-small-house-icon-beautiful-simple-wind-house-free-illustration-image_1174142-removebg-preview.png">
 </head>
 
-<body >
+<body>
     <div class="container">
         <div class="row">
             <div class="create-batdongsan">
@@ -23,7 +24,7 @@
                     </div>
                     <div class="form-group">
                         <label for="content">Nội dung: </label>
-                        <textarea id="content" cols="20" rows="2" class="form-control" rows="4" cols="50" ></textarea>
+                        <textarea id="content" cols="20" rows="2" class="form-control" rows="4" cols="50"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="area">Diện tích: </label>
@@ -48,7 +49,10 @@
                     <div class="form-group">
                         <label for="avatar">Avatar Url: </label>
                         <input type="url" id="avatar" class="form-control">
+                        <p class="time"></p>
                     </div>
+
+
                 </div>
                 <div class="form-group">
                     <button onclick="addbatdongsan()" class="btn btn-dark">Đăng</button>
@@ -56,20 +60,83 @@
                 </div>
             </div>
         </div>
+        <div class="row1">
+            <!-- <div class="form-group">
+                <label for="avatar">Tìm kiếm: </label>
+                <p> <input type="text" id="search" oninput="search()"> </p>
+            </div> -->
+            <div class="div-button-find">
+                <label class="lb_information" for="ip_find">Tìm Kiếm theo tiêu đề: </label>
+                <input class="ip_information" oninput="searchProduct()" id="ip_find" type="text">
+                <p  id="rd_name" name="find" value="name" checked></p>
+
+            </div>
+            <div class="form-group">
+                Giá
+                <span class="sort" title="ascending" onclick="ascending('price')">&#9650;</span>
+                <span class="sort" title="descending" onclick="descending('price')">&#9660;</span>
+            </div>
+            <div class="form-group">Diện tích
+                <span class="sort" title="ascending" onclick="ascending('area')">&#9650;</span>
+                <span class="sort" title="descending" onclick="descending('area')">&#9660;</span>
+            </div>
+        </div>
+
         <div class="row">
             <div class="show-batdongsan">
                 <table id="tbbatdongsan" class="tbbatdongsan">
                     <tbody id="tbLand">
-                        
+                        <!-- mẫu không dùng bảng -->
+                        <!-- <div class="content" style="position: relative;">
+                            <div>
+                                <div style="width: 90%; float: left; text-align:left; color: blue;">PHÚ THƯỢNG CHỈ
+                                    2TỶ1XĐẤ MT KIỆT XÓM 6 LẠI THẾ - PHÚ THƯỢNG CHỈ 2TỶ1X</div>
+                                <div style="width: 10%; float: right; text-align:right; color: red;">10/10/2022</div>
+                            </div>
+                            <div class="linkanh"
+                                style="float: left; width: 100px; max-height: 100px; margin: 1px 5px 0 0;">
+                                <img
+                                    src="https://alonhadat.com.vn/files/properties/2022/9/23/thumbnails/011677411-4554-ban-dat-tho-cu-dat-o-hue-chinh-chu.jpg">
+                            </div>
+                            <div class="text" style="float: right; width: 88%">
+                                <div style="text-align:center">
+                                    ✍ Thông tin sản phẩm :
+                                    💈 Khu vực : KV 5
+                                    💈 Diện tích : 60m2.
+                                    💈 Đường 13,5m.
+                                    💈 Hướng : Đông Bắc.
+                                    💈 Pháp lý : Đã có sổ.
+                                    💈 Điệ... </div>
+                                <div>
+                                    <div style="width: 40%; float: left">Dien tích: 100 m2</div>
+                                    <div style="width: 25%; float: left">KT: 10x10</div>
+                                    <div style="width: 25%; float: right; text-align:right ">Hướng: Đông Nam</div>
+                                </div>
+                                <div>
+                                    <div style="width: 30%; float: left; color: red;">Giá: 1.000.000.000 đồng</div>
+                                    <div style="width: 70%; float: right; text-align:right">Vị trí: Đường Lê Khắc Quyến,
+                                        P. An Cựu, Thành phố Huế, Huế</div>
+                                </div>
+                            </div>
+                        </div> -->
                     </tbody>
                 </table>
             </div>
         </div>
+        <div class="row">
+            <div class="paging-area">
+                <ul id="pagination">
+                </ul>
+
+            </div>
+        </div>
     </div>
 
+    <script src="./batdongsan.js">
 
-<script src="./batdongsan.js"></script>
-<!-- <script src="/batdongsan.js"></script> -->
+
+    </script>
+    <!-- <script src="/batdongsan.js"></script> -->
 </body>
 
 </html>

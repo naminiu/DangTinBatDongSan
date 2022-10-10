@@ -1,3 +1,4 @@
+
 class batdongsan {
     constructor(id, title, content, area, size, direction, price, location, avatar) {
         this.id = id;
@@ -14,11 +15,15 @@ class batdongsan {
 
 var batdongsans = []
 const keyData = "batdongsanData";
+const sort_asc = "asc";
+const sort_desc = "desc";
+const sort_asc1 = "asc1";
+const sort_desc1 = "desc1";
 
 function init() {
     if (getData("keyData") == null) {
         batdongsans = [
-            new batdongsan(1, "✅2 LÔ ĐẤT KIỆT ÔTÔ HOÀNG QUỐC VIỆT - AN ĐÔNG CHỈ 2TỶ2X", "Vị trí lô đất cách trục Hoàng Quốc Việt chỉ 300m, thông ra Tố Hữu 350m, gần các Khu Đô thị lớn TP Huế. Khu vực dân cư sầm uất, văn minh, tiện ích bao quanh. Diện tích 60.2m2 - 60.4m2, Đường bêtông 3m, Hướng Nam, Đất ở đô thị 💯", 110, "5,5x20", "Đông Nam", 900000000, "đường Cao Lãnh, p. Xuân Phú, TP Huế", "https://alonhadat.com.vn/files/properties/2022/10/3/images/111752319-4050-ban-nha-mat-tien-ha-noi-gia-re.jpg"),
+            new batdongsan(1, "✅2 LÔ ĐẤT KIỆT ÔTÔ HOÀNG QUỐC VIỆT ", "Vị trí lô đất cách trục Hoàng Quốc Việt chỉ 300m, thông ra Tố Hữu 350m, gần các Khu Đô thị lớn TP Huế. Khu vực dân cư sầm uất, văn minh, tiện ích bao quanh. Diện tích 60.2m2 - 60.4m2, Đường bêtông 3m, Hướng Nam, Đất ở đô thị 💯", 110, "5,5x20", "Đông Nam", 900000000, "đường Cao Lãnh, p. Xuân Phú, TP Huế", "https://alonhadat.com.vn/files/properties/2022/10/3/images/111752319-4050-ban-nha-mat-tien-ha-noi-gia-re.jpg"),
             new batdongsan(2, "💥ĐẤT MT KIỆT XÓM 6 LẠI THẾ - PHÚ THƯỢNG CHỈ 2TỶ1X", "✔ Diện tích 79m2 Ngang 4m Nở hậu 4.5m ✔ Đường ôtô 4m ✔ Hướng Tây Bắc ✔ Full đất thổ cư Vị trí mặt tiền kiệt xóm 6 Lại Thế, Phú Thượng, TP Huế. Cách Sân Vận động Phú Thượng chỉ 250m, cách trục Phạm Văn Đồng 400m. Khu vực cao ráo, dân cư đông đúc, tiện ích đầy đủ", 79, "4x20", "Đông Nam", 2170000000, "đường Cao Lãnh, p. Xuân Phú, TP Huế", "https://alonhadat.com.vn/files/properties/2022/10/3/images/011751231-1808-ban-toa-ccmn-so132-cau-giay-120m2x7t-gia-19-5-ty-29-phong-khep-kin-sat-o-to-.jpg"),
         ]
         setData("keyData", batdongsans);
@@ -34,14 +39,16 @@ function setData(key, data) {
     localStorage.setItem(key, JSON.stringify(data))
 }
 
+
 function renderbatdongsan() {
-    let htmls = batdongsans.map(function (bds) {
+    let data = batdongsans.slice((page_size * (page_number - 1)), (page_size * page_number));
+    let htmls = data.map(function (bds) {
         return `
         <tr><td>
             <table style='' class="distance">
                 <tbody id="tr_${bds.id}">
                     <tr >
-                        <td colspan="5" class="col1">${bds.title}</td>
+                        <td colspan="5" class="col1">${bds.title} </td>
                     </tr>
                     <tr >
                         <td rowspan="3"><img class="avatar-sm" src="${bds.avatar}"></td>
@@ -72,10 +79,9 @@ function renderbatdongsan() {
             </td></tr>
         `
     })
-    console.log(htmls)
     document.getElementById("tbLand").innerHTML = htmls.join("");
+    buildPagination()
 }
-
 
 
 function addbatdongsan() {
@@ -107,10 +113,10 @@ function addbatdongsan() {
         alert("Hướng là bắt buộc")
         return;
     }
-        // if (!validation(price)) {
-        //     alert("Giá là bắt buộc")
-        //     return;
-        // }
+    // if (!validation(price)) {
+    //     alert("Giá là bắt buộc")
+    //     return;
+    // }
     if (!validation(location)) {
         alert("Vị trí là bắt buộc")
         return;
@@ -148,7 +154,6 @@ function resetForm() {
 }
 
 function remove(id) {
-    console.log(id);
     let confirmed = window.confirm("Bạn có muốn xóa sản phẩm này không?");
     if (confirmed) {
         let position = batdongsans.findIndex(function (pdt) {
@@ -236,8 +241,141 @@ function getLastestId() {
     return maxId;
 }
 
+var page_size = 2;
+var total_pages = 0;
+var page_number = 1;
+
+function buildPagination() {
+    total_pages = Math.ceil(batdongsans.length / page_size);
+    let paginationString = "";
+    let start = page_number == 1 ? 1 : page_number == total_pages ? page_number - 2 : page_number - 1;
+    let end = page_number == total_pages ? total_pages : page_number == 1 ? page_number + 2 : page_number + 1;
+    paginationString += `<li class="page-item"><button onclick='changePage(1)'>&#x25C0;</button></li>`;
+    for (let page = 1; page <= total_pages; page++) {
+        paginationString += `<li class="page-item">
+                                    <button class='${page == page_number ? 'active' : ''}'
+                                        onclick='changePage(${page})'>
+                                ${page}</button></li>`
+    }
+    paginationString += `<li class="page-item"><button onclick='changePage(${total_pages})'>&#x25B6;</button></li>`;
+    document.getElementById('pagination').innerHTML = paginationString;
+}
+
+
+function changePage(page) {
+    page_number = page;
+    renderbatdongsan();
+}
+
 function ready() {
     init();
     renderbatdongsan();
+
 }
 ready();
+
+// function sort(direct) {
+//     if (direct == sort_asc) {
+//         batdongsans.sort(function (pdt1, pdt2) {
+//             return pdt1.price - pdt2.price;
+//         })
+//     }
+//     else {
+//         batdongsans.reverse();
+//     }
+//     renderbatdongsan();
+// }
+function ascending(field) {
+    batdongsans.sort(function (can_1, can_2) {
+        return can_1[field] - can_2[field];
+
+
+    })
+    renderbatdongsan();
+    
+}
+function descending(field) {
+    batdongsans.sort(function (can_1, can_2) {
+        return can_2[field] - can_1[field];
+    })
+    renderbatdongsan();
+}
+
+
+const checkName = document.querySelector("#rd_name");
+const productFind = document.querySelector("#ip_find");
+const divPagination = document.querySelector(".pagination");
+const table_products = document.getElementById("tbLand");
+const default_page_number = 1;
+
+// function hideDivPagination() {
+//     // divPagination.classList.add('d-none');
+// }
+
+// function showDivPagination() {
+//     // divPagination.classList.remove('d-none');
+// }
+
+function searchProduct() {
+    if (checkName) {
+        // hideDivPagination();
+        table_products.innerHTML = findByName(productFind.value);
+    }
+    if (productFind.value.trim() == ""){
+        // showDivPagination();
+        renderbatdongsan(batdongsans, default_page_number);
+    } 
+}
+
+function findByName(findName) {
+    let html = "";
+    for (let i = 0; i < batdongsans.length; i++) {
+        if (batdongsans[i].title.toUpperCase().includes(findName.toUpperCase())) {
+            html += `
+            <tr><td>
+                <table style='' class="distance">
+                    <tbody id="tr_${batdongsans[i].id}">
+                        <tr >
+                            <td colspan="5" class="col1">${batdongsans[i].title} </td>
+                        </tr>
+                        <tr >
+                            <td rowspan="3"><img class="avatar-sm" src="${batdongsans[i].avatar}"></td>
+                            <td colspan="4" class="contentshow">${batdongsans[i].content}...<a href="">&#9734;&#9734;Xem chi
+                                    tiết&#9734;&#9734;</a></td>
+                        </tr>
+                        <tr>
+                            <td><b>Diện tích:</b>  ${batdongsans[i].area}  m2</td>
+                            <td><b>KT:</b> ${batdongsans[i].size} m</td>
+                            <td><b>Hướng:</b> ${batdongsans[i].direction}</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="" class="priceshow" type="number"><b> Giá:</b> ${formatCurrency(batdongsans[i].price)}</td>
+                            <td colspan="2"><b>Vị trí: </b>${batdongsans[i].location}</td>
+                            <td colspan="1" id="action_${batdongsans[i].id}">
+                                            <button class="btn1 btn-dark1" onclick="change(${batdongsans[i].id})">Chỉnh sửa</button>
+                                            <button class="update d-none" onclick="update(${batdongsans[i].id})">Cập nhật</button>
+                                            <button class="cancel d-none" onclick="Cancel(${batdongsans[i].id})">Hủy</button>
+                                            <button class="btn1 btn-warning1" onclick="remove(${batdongsans[i].id})">Xóa</button>
+                            </td>
+                        </tr>
+                        <tr>
+                        <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </td></tr>
+            `
+        }
+    }
+    return html;
+}
+
+
+// const d = new Date();
+// let day = d.getDate();
+// let month = d.getMonth() + 1;
+// let year = d.getFullYear();
+// let newd = `${day}/${month}/${year}`;
+// document.getElementById("search").value = newd;
+

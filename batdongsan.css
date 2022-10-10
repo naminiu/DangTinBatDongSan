@@ -147,7 +147,7 @@
 }
 
 .btn-dark1 {
-    background-color: rgb(255, 131, 29);
+    background-color: rgb(132, 184, 11);
     color: white;
 }
 
@@ -176,10 +176,10 @@
 
 .distance {
     margin: 0 0 10px;
-    padding: 5px;
-    border: 1px dashed #CCC;
+    padding: 10px;
+    border: 2px dashed #CCC;
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
+    border-radius: 10px;
     position: relative;
 }
 
@@ -194,8 +194,58 @@
 }
 
 /* body { */
-    /* background-image: url('https://img6.thuthuatphanmem.vn/uploads/2022/03/04/anh-background-nha-cho-zoom_013003515.png');
+/* background-image: url('https://img6.thuthuatphanmem.vn/uploads/2022/03/04/anh-background-nha-cho-zoom_013003515.png');
     background-repeat: no-repeat;
     background-attachment: fixed; 
     background-size: 100% 100%; */
 /* } */
+
+
+.page-item>button {
+    border: none;
+    outline: none;
+    padding: 10px;
+    border: 1px solid orange;
+    border-radius: 3px;
+    margin-right: 2px;
+}
+
+.page-item>button:hover {
+    background-color: orange;
+    cursor: pointer;
+}
+
+.paging-area {
+    display: flex;
+    justify-content: space-between;
+}
+
+#pagination {
+    list-style: none;
+    display: flex;
+}
+
+.row1 {
+    width: 110%;
+    background-color: rgb(201, 152, 152);
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.sort {
+    margin-right: 2px;
+}
+
+.sort:hover {
+    border: 1px solid orange;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.active{
+    background-color: darkorange;
+    color: white;
+}
+
